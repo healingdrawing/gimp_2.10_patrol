@@ -1,0 +1,138 @@
+gimp 2.10
+drawing a starspace
+4000x2000 px can generate effects (sparkle, etc) few minutes.
+
+example tested on 400x400px size image
+final image will have 7 layers. Create layer step by step. Each new layer on top. Later layers will be reordered.
+
+---------------------
+"face stars" layer
+(foreground white , background black)
+- Tools - Paint Tools - Bucket Fill
+-- BG color fill
+-- fill black (which is background)
+
+- Filters - Noise - CIE ich Noise...
+-- Dulling 8
+-- Lightness 100
+-- Chroma 0
+-- Hue 0
+-- press "new seed" to looks good
+-- ok
+
+- Colors - Brightness-Contrast...
+-- Contrast 63
+-- Brightness -20...0...20 (number of stars)
+-- ok
+
+- Filters - Light and Shadow - Sparkle...
+-- luminosity threshold 0.001
+-- Flare intensity 1.0
+-- Spike length 10
+-- Spike points 4
+-- Spike angle -1
+-- Spike density 1
+-- Transparency 0
+-- Random hue 0
+-- Random saturation 0
+-- Foreground color (white)
+-- ok
+
+
+-----------------------
+"back stars" layer
+(foreground white , background black)
+- Tools - Paint Tools - Bucket Fill
+-- BG color fill
+-- fill black (which is background)
+
+- Filters - Noise - CIE ich Noise...
+-- Dulling 8
+-- Lightness 75
+-- Chroma 0
+-- Hue 0
+-- press "new seed" to looks good
+-- ok
+
+- Filters - Light and Shadow - Sparkle...
+-- luminosity threshold 0.006
+-- Flare intensity 0.5
+-- Spike length 10
+-- Spike points 4
+-- Spike angle -1
+-- Spike density 1
+-- Transparency 0
+-- Random hue 0
+-- Random saturation 0
+-- Foreground color (white)
+-- ok
+
+--------------------------
+"color plasma" layer
+- Filters - Render - Noise - Plasma...
+-- New Seed ... to looks good
+-- ok
+
+-------------------------
+"black" layer
+(foreground white , background black)
+- Tools - Paint Tools - Bucket Fill
+-- BG color fill
+-- fill black (which is background)
+
+------------------
+"nebula plasma" layer
+- Filters - Render - Noise - Plasma...
+-- Turbulence 0.5
+-- New Seed ... to looks good
+-- ok
+
+--------------------
+"nebula noise" layer
+- Filters - Render - Noise - Solid Noise...
+-- X Size 4
+-- Y Size 4
+-- Detail 15
+-- ok
+
+-----------------------
+"supernova" layer (transparent)
+- Filters - Light and Shadow - Supernova...
+-- Radius 3...4
+-- Number of spokes 100
+-- Random hue 0
+-- color similar to highlighted area
+-- color alpha 0
+ (use it after arrangement and addition of effects to all other layers(next step), that highlights any areas uses similar color with alpha 0. That decrease light - decrease the rgb component)
+ -- ok
+
+
+--------------------------
+Arrange the layers in the following order from top to bottom:
+- 1 color plasma
+- 2 face stars
+- 3 back stars
+- 4 supernova
+- 5 nebula noise
+- 6 nebula plasma
+- 7 black
+
+---------------------------
+configure view mode for layers:
+- color plasma - Mode Overlay
+- face stars - Mode Addition
+- back stars - Mode Addition
+- supernova - Mode Normal
+- nebula noise - Mode Linear burn
+- nebula plasma - Mode Normal
+- black - Mode Normal
+
+
+
+done ... now you can use File - Export As... to export result to PNG image
+
+
+
+----------------------------------
+after Brightness and Contrast the sparkle - Flare Intensity and other parameters change the result different than before
+
